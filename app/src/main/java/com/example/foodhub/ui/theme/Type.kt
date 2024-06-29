@@ -24,11 +24,57 @@ val helveticaNeue = FontFamily(
     )
 )
 
+//Welcome
 val welcomeDescription = TextStyle(
     fontSize = 20.sp,
     fontFamily = sofiaPro,
     fontWeight = FontWeight.Normal,
     color = welcomeDescriptionText
+)
+
+//Auth
+val authTitle = TextStyle(
+    color = Color.Black,
+    fontFamily = sofiaPro,
+    fontWeight = FontWeight.SemiBold,
+    fontSize = 50.sp
+)
+val authLabel = TextStyle(
+    color = authTextFieldLabel,
+    fontFamily = sofiaPro,
+    fontWeight = FontWeight.Normal,
+    fontSize = 16.sp
+)
+val inputAuth = TextStyle(
+    color = inputAuthText,
+    fontFamily = sofiaPro,
+    fontWeight = FontWeight.Medium,
+    fontSize = 17.sp
+)
+val placeholderAuth = TextStyle(
+    color = placeholderAuthText,
+    fontFamily = sofiaPro,
+    fontWeight = FontWeight.Normal,
+    fontSize = 17.sp
+)
+val authOption = TextStyle(
+    color = Color.White,
+    fontFamily = sofiaPro,
+    fontWeight = FontWeight.Normal,
+    fontSize = 15.sp
+)
+val clickableOption = TextStyle(
+    color = appOrange,
+    fontFamily = sofiaPro,
+    fontWeight = FontWeight.Medium,
+    fontSize = 15.sp,
+)
+val otherAuthOption = TextStyle(
+    color = Color.Black,
+    fontFamily = sofiaPro,
+    fontWeight = FontWeight.Medium,
+    fontSize = 15.sp,
+    letterSpacing = 0.05.sp
 )
 
 // Set of Material typography styles to start with
