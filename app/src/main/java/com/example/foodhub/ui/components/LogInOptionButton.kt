@@ -35,6 +35,7 @@ fun LogInOptionButton(@DrawableRes iconId: Int, text: String, onclick: ()->Unit)
             .background(Color.White)
             .width(160.dp)
             .height(60.dp)
+            .padding(10.dp)
             .clickable {
                 onclick
             }
@@ -42,16 +43,16 @@ fun LogInOptionButton(@DrawableRes iconId: Int, text: String, onclick: ()->Unit)
         Image(
             painter = painterResource(id = iconId),
             contentDescription = text,
-            modifier = Modifier.padding(10.dp).size(36.dp)
+            modifier = Modifier.padding(end = 10.dp).size(30.dp)
         )
         Text(
             text = text,
             style = TextStyle(
                 color = Color.Black,
                 fontFamily = sofiaPro,
-                fontWeight = FontWeight.SemiBold,
+                fontWeight = FontWeight.Medium,
                 fontSize = 16.sp,
-                letterSpacing = 1.sp
+                letterSpacing = 0.5.sp
             ),
             textAlign = TextAlign.Center
         )
