@@ -4,8 +4,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.example.foodhub.ui.components.welcome.WelcomeScreen
+import com.example.foodhub.ui.view.auth.LogInScreen
 import com.example.foodhub.ui.theme.FoodHubTheme
+import com.example.foodhub.ui.view.auth.SignUpScreen
+import com.example.foodhub.ui.view.auth.WelcomeScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,7 +17,7 @@ class MainActivity : ComponentActivity() {
         Thread.sleep(1000)
         setContent {
             FoodHubTheme{
-                WelcomeScreen()
+                LogInScreen()
             }
         }
     }

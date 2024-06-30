@@ -73,7 +73,7 @@ val otherAuthOption = TextStyle(
     color = Color.Black,
     fontFamily = sofiaPro,
     fontWeight = FontWeight.Medium,
-    fontSize = 15.sp,
+    fontSize = 16.sp,
     letterSpacing = 0.05.sp
 )
 

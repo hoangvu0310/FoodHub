@@ -1,4 +1,4 @@
-package com.example.foodhub.ui.components.welcome
+package com.example.foodhub.ui.view.auth
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.BorderStroke
@@ -41,6 +41,8 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.foodhub.R
+import com.example.foodhub.ui.components.auth.AuthenticationButton
+import com.example.foodhub.ui.components.auth.OtherOptionTextWithLine
 import com.example.foodhub.ui.theme.appOrange
 import com.example.foodhub.ui.theme.sofiaPro
 import com.example.foodhub.ui.theme.startSignUpText
@@ -125,53 +127,34 @@ fun WelcomeScreen() {
 
             Spacer(modifier = Modifier.size(240.dp))
 
-            Row(
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Canvas(modifier = Modifier.weight(0.3f)) {
-                    val canvasWidth = size.width
-
-                    drawLine(
-                        color = Color.White,
-                        start = Offset(x = 0f, y = 0f),
-                        end = Offset(x = canvasWidth, y = 0f),
-                        alpha = 0.5f,
-                        strokeWidth = 7f
-                    )
-                }
-                Text(
-                    text = "sign in with",
-                    style = TextStyle(
-                        color = Color.White,
-                        fontFamily = sofiaPro,
-                        fontWeight = FontWeight.Medium,
-                        fontSize = 18.sp
-                    ),
-                    modifier = Modifier.padding(horizontal = 20.dp)
-                )
-                Canvas(modifier = Modifier.weight(0.3f)) {
-                    val canvasWidth = size.width
-
-                    drawLine(
-                        color = Color.White,
-                        start = Offset(x = 0f, y = 0f),
-                        end = Offset(x = canvasWidth, y = 0f),
-                        alpha = 0.5f,
-                        strokeWidth = 7f
-                    )
-                }
-            }
+            OtherOptionTextWithLine(
+                text = "sign in with",
+                strokeWidth = 7f,
+                lineColor = Color.White,
+                style = TextStyle(
+                    color = Color.White,
+                    fontFamily = sofiaPro,
+                    fontWeight = FontWeight.Medium,
+                    fontSize = 18.sp
+                ),
+            )
 
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                LogInOptionButton(iconId = R.drawable.fb_icon, text = "FACEBOOK") {
+                AuthenticationButton(
+                    iconId = R.drawable.fb_icon,
+                    text = "FACEBOOK",
+                    elevation = 0.dp
+                ) {
 
                 }
-                LogInOptionButton(iconId = R.drawable.gg_icon, text = "GOOGLE") {
+                AuthenticationButton(
+                    iconId = R.drawable.gg_icon,
+                    text = "GOOGLE",
+                    elevation = 0.dp
+                ) {
 
                 }
             }
@@ -233,40 +216,5 @@ fun WelcomeScreen() {
                 )
             }
         }
-    }
-}
-
-@Composable
-fun LogInOptionButton(@DrawableRes iconId: Int, text: String, onclick: () -> Unit) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .padding(horizontal = 10.dp, vertical = 20.dp)
-            .clip(RoundedCornerShape(35.dp))
-            .background(Color.White)
-            .width(160.dp)
-            .height(60.dp)
-            .clickable {
-                onclick
-            }
-    ) {
-        Image(
-            painter = painterResource(id = iconId),
-            contentDescription = text,
-            modifier = Modifier
-                .padding(horizontal = 10.dp, vertical = 5.dp)
-                .size(35.dp)
-        )
-        Text(
-            text = text,
-            style = TextStyle(
-                color = Color.Black,
-                fontFamily = sofiaPro,
-                fontWeight = FontWeight.Medium,
-                fontSize = 16.sp,
-                letterSpacing = 0.5.sp
-            ),
-            textAlign = TextAlign.Center,
-        )
     }
 }

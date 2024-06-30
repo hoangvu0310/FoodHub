@@ -1,5 +1,6 @@
 package com.example.foodhub.ui.components.auth
 
+import android.widget.Space
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
@@ -39,7 +40,7 @@ import com.example.foodhub.ui.theme.sideOptionText
 import com.example.foodhub.ui.theme.sofiaPro
 
 @Composable
-fun AuthenticationOption(
+fun AuthenticationOptionGroup(
     mainOption: String,
     sideText: String,
     sideOption: String,
@@ -87,84 +88,37 @@ fun AuthenticationOption(
         )
     }
 
-    Row(
-        horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .padding(top = 35.dp, start = 10.dp, end = 10.dp)
-            .fillMaxWidth()
-    ) {
-        Canvas(modifier = Modifier.weight(1f)) {
-            val canvasWidth = size.width
+    Spacer(modifier = Modifier.size(30.dp))
 
-            drawLine(
-                color = line,
-                start = Offset(x = 0f, y = 0f),
-                end = Offset(x = canvasWidth, y = 0f),
-                alpha = 0.5f,
-                strokeWidth = 3f
-            )
-        }
-        Text(
-            text = otherOptionText,
-            style = TextStyle(
-                color = sideOptionText,
-                fontFamily = sofiaPro,
-                fontWeight = FontWeight.Medium,
-                fontSize = 15.sp
-            ),
-            modifier = Modifier.padding(horizontal = 20.dp)
-        )
-        Canvas(modifier = Modifier.weight(1f)) {
-            val canvasWidth = size.width
-
-            drawLine(
-                color = line,
-                start = Offset(x = 0f, y = 0f),
-                end = Offset(x = canvasWidth, y = 0f),
-                alpha = 0.5f,
-                strokeWidth = 3f
-            )
-        }
-    }
+    OtherOptionTextWithLine(
+        text = otherOptionText,
+        strokeWidth = 3f,
+        lineColor = line,
+        style = TextStyle(
+            color = sideOptionText,
+            fontFamily = sofiaPro,
+            fontWeight = FontWeight.Medium,
+            fontSize = 15.sp
+        ),
+    )
 
     Row(
-        horizontalArrangement = Arrangement.SpaceAround,
+        horizontalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier.fillMaxWidth()
     ) {
-        OtherOptionButton(iconId = R.drawable.fb_icon, text = "FACEBOOK") {
+        AuthenticationButton(
+            iconId = R.drawable.fb_icon,
+            text = "FACEBOOK",
+            elevation = 0.5.dp
+        ) {
 
         }
-        OtherOptionButton(iconId = R.drawable.gg_icon, text = "GOOGLE") {
+        AuthenticationButton(
+            iconId = R.drawable.gg_icon,
+            text = "GOOGLE",
+            elevation = 0.5.dp
+        ) {
 
         }
-    }
-}
-
-@Composable
-fun OtherOptionButton(@DrawableRes iconId: Int, text: String, onclick: () -> Unit) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .padding(horizontal = 10.dp, vertical = 20.dp)
-            .clip(RoundedCornerShape(35.dp))
-            .background(Color(0xFFFEFEFE))
-            .clickable {
-                onclick
-            }
-    ) {
-        Image(
-            painter = painterResource(id = iconId),
-            contentDescription = text,
-            modifier = Modifier
-                .padding(5.dp)
-                .size(40.dp)
-        )
-        Text(
-            text = text,
-            style = otherAuthOption,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.padding(top = 10.dp, bottom = 10.dp, end = 10.dp)
-        )
     }
 }

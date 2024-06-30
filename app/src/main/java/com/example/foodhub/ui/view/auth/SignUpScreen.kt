@@ -1,8 +1,6 @@
-package com.example.foodhub.ui.components.auth
+package com.example.foodhub.ui.view.auth
 
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,8 +10,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
@@ -26,7 +22,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -34,22 +29,26 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import com.example.foodhub.R
+import com.example.foodhub.ui.components.auth.AuthenticationOptionGroup
 import com.example.foodhub.ui.theme.appOrange
 import com.example.foodhub.ui.theme.authLabel
 import com.example.foodhub.ui.theme.authTitle
 import com.example.foodhub.ui.theme.circleBeige
-import com.example.foodhub.ui.theme.clickableOption
 import com.example.foodhub.ui.theme.inputAuth
 import com.example.foodhub.ui.theme.passwordButton
 import com.example.foodhub.ui.theme.placeholderAuth
 import com.example.foodhub.ui.theme.unfocusedTextField
 
+
 @Composable
-fun LogInScreen() {
-    var emailState by remember {
+fun SignUpScreen() {
+    var nameFieldState by remember {
         mutableStateOf("")
     }
-    var passwordState by remember {
+    var emailFieldState by remember {
+        mutableStateOf("")
+    }
+    var passwordFieldState by remember {
         mutableStateOf("")
     }
     var showPassword by remember {
@@ -85,43 +84,64 @@ fun LogInScreen() {
             )
 
         }
-
-        Box(
-            contentAlignment = Alignment.Center,
-            modifier = Modifier
-                .padding(30.dp)
-                .clip(RoundedCornerShape(12.dp))
-                .background(Color.White)
-                .size(38.dp)
-                .clickable {
-
-                }
-        ) {
-            Icon(
-                imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
-                contentDescription = "Back"
-            )
-        }
-
-        Column(
+        
+        Column ( // Input text fields
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .padding(horizontal = 30.dp, vertical = 20.dp)
                 .fillMaxSize()
         ) {
-            Spacer(modifier = Modifier.size(180.dp))
+            Spacer(modifier = Modifier.size(100.dp))
 
-            // Text field
+            //Text field
             Column(
-                horizontalAlignment = Alignment.Start
+                horizontalAlignment = Alignment.Start,
+                modifier = Modifier.fillMaxWidth()
             ) {
                 Text(
-                    text = "Login",
+                    text = "Sign up",
                     style = authTitle,
                     modifier = Modifier
                         .padding(bottom = 30.dp)
                         .fillMaxWidth()
+                )
+
+                // Full name field
+                Text(
+                    text = "Full name",
+                    style = authLabel,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 10.dp)
+                )
+                OutlinedTextField(
+                    value = nameFieldState,
+                    onValueChange = { inputText ->  // Disable user from starting and ending with ' '
+                        nameFieldState = inputText.trimStart{it == ' '}.trimEnd{it == ' '}
+
+                        isEmptyFields = !(nameFieldState.isNotBlank()   // Check if fields are empty
+                                && emailFieldState.isNotBlank()
+                                && passwordFieldState.isNotBlank()
+                                )
+                    },
+
+                    textStyle = inputAuth,
+                    placeholder = {
+                        Text(
+                            text = "Your full name",
+                            style = placeholderAuth
+                        )
+                    },
+                    singleLine = true,
+                    shape = RoundedCornerShape(10.dp),
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedBorderColor = appOrange,
+                        unfocusedBorderColor = unfocusedTextField
+                    ),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 20.dp)
                 )
 
                 // Email field
@@ -133,12 +153,14 @@ fun LogInScreen() {
                         .padding(vertical = 10.dp)
                 )
                 OutlinedTextField(
-                    value = emailState,
+                    value = emailFieldState,
                     onValueChange = { inputText ->  // Disable user from starting and ending with ' '
-                        emailState = inputText.trimStart{it == ' '}.trimEnd {it == ' '}
+                        emailFieldState = inputText.trimStart{it == ' '}.trimEnd {it == ' '}
 
-                        // Check if fields are empty
-                        isEmptyFields = !(emailState.isNotBlank() && passwordState.isNotBlank())
+                        isEmptyFields = !(nameFieldState.isNotBlank()   // Check if fields are empty
+                                && emailFieldState.isNotBlank()
+                                && passwordFieldState.isNotBlank()
+                                )
                     },
                     textStyle = inputAuth,
                     placeholder = {
@@ -160,20 +182,21 @@ fun LogInScreen() {
 
                 // Password field
                 Text(
-                    text = "Password",
-                    style = authLabel,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(vertical = 10.dp)
+                text = "Password",
+                style = authLabel,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 10.dp)
                 )
 
                 OutlinedTextField(
-                    value = passwordState,
+                    value = passwordFieldState,
                     onValueChange = {
-                        passwordState = it
-
-                        // Check if fields are empty
-                        isEmptyFields = !(emailState.isNotBlank() && passwordState.isNotBlank())
+                        passwordFieldState = it
+                        isEmptyFields = !(nameFieldState.isNotBlank()   // Check if fields are empty
+                                && emailFieldState.isNotBlank()
+                                && passwordFieldState.isNotBlank()
+                                )
                     },
                     textStyle = inputAuth,
                     placeholder = {
@@ -208,33 +231,23 @@ fun LogInScreen() {
                         }
                     },
                     visualTransformation = (
-                            if(showPassword) {
-                                VisualTransformation.None
-                            } else {
-                                PasswordVisualTransformation()
-                            }
-                            ),
+                        if(showPassword) {
+                            VisualTransformation.None
+                        } else {
+                            PasswordVisualTransformation()
+                        }
+                    ),
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(bottom = 30.dp)
+                        .padding(bottom = 40.dp)
                 )
             }
 
-            Text(
-                text = "Forgot password?",
-                style = clickableOption,
-                modifier = Modifier
-                    .padding(bottom = 30.dp)
-                    .clickable {
-
-                    }
-            )
-            
-            AuthenticationOption(
-                mainOption = "LOGIN",
-                sideText = "Don't have an account? ",
-                sideOption = "Sign Up",
-                otherOptionText = "Sign in with",
+            AuthenticationOptionGroup(
+                mainOption = "SIGN UP",
+                sideText = "Already have an account? ",
+                sideOption = "Login",
+                otherOptionText = "Sign up with",
                 isEmptyFields = isEmptyFields
             )
         }
