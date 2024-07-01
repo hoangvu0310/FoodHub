@@ -25,56 +25,70 @@ val helveticaNeue = FontFamily(
 )
 
 //Welcome
-val welcomeDescription = TextStyle(
+val welcomeDescriptionStyle = TextStyle(
     fontSize = 20.sp,
     fontFamily = sofiaPro,
     fontWeight = FontWeight.Normal,
+    lineHeight = 30.sp,
     color = welcomeDescriptionText
 )
 
 //Auth
-val authTitle = TextStyle(
+val authTitleStyle = TextStyle(
     color = Color.Black,
     fontFamily = sofiaPro,
     fontWeight = FontWeight.SemiBold,
-    fontSize = 50.sp
+    fontSize = 40.sp
 )
-val authLabel = TextStyle(
+val authTextFieldLabelStyle = TextStyle(
     color = authTextFieldLabel,
     fontFamily = sofiaPro,
     fontWeight = FontWeight.Normal,
     fontSize = 16.sp
 )
-val inputAuth = TextStyle(
+val inputAuthStyle = TextStyle(
     color = inputAuthText,
     fontFamily = sofiaPro,
     fontWeight = FontWeight.Medium,
     fontSize = 17.sp
 )
-val placeholderAuth = TextStyle(
+val placeholderAuthStyle = TextStyle(
     color = placeholderAuthText,
     fontFamily = sofiaPro,
     fontWeight = FontWeight.Normal,
     fontSize = 17.sp
 )
-val authOption = TextStyle(
+val authOptionStyle = TextStyle(
     color = Color.White,
     fontFamily = sofiaPro,
-    fontWeight = FontWeight.Normal,
+    fontWeight = FontWeight.SemiBold,
     fontSize = 15.sp
 )
-val clickableOption = TextStyle(
+val clickableOptionStyle = TextStyle(
     color = appOrange,
     fontFamily = sofiaPro,
     fontWeight = FontWeight.Medium,
     fontSize = 15.sp,
 )
-val otherAuthOption = TextStyle(
+val otherAuthOptionStyle = TextStyle(
     color = Color.Black,
     fontFamily = sofiaPro,
     fontWeight = FontWeight.Medium,
     fontSize = 16.sp,
     letterSpacing = 0.05.sp
+)
+val subTitleStyle = TextStyle(
+    color = Color(0xFF9796A1),
+    fontFamily = sofiaPro,
+    fontWeight = FontWeight.Normal,
+    fontSize = 14.sp,
+    lineHeight = 19.sp
+)
+val otpValueStyle = TextStyle(
+    color = appOrange,
+    fontFamily = sofiaPro,
+    fontWeight = FontWeight.Medium,
+    fontSize = 27.sp
 )
 
 // Set of Material typography styles to start with

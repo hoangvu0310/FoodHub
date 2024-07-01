@@ -1,6 +1,5 @@
 package com.example.foodhub.ui.view.auth
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -11,8 +10,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
@@ -25,22 +22,21 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import com.example.foodhub.R
+import com.example.foodhub.ui.components.BackButton
 import com.example.foodhub.ui.components.auth.AuthBackground
 import com.example.foodhub.ui.components.auth.AuthenticationOptionGroup
 import com.example.foodhub.ui.theme.appOrange
-import com.example.foodhub.ui.theme.authLabel
-import com.example.foodhub.ui.theme.authTitle
-import com.example.foodhub.ui.theme.clickableOption
-import com.example.foodhub.ui.theme.inputAuth
+import com.example.foodhub.ui.theme.authTextFieldLabelStyle
+import com.example.foodhub.ui.theme.authTitleStyle
+import com.example.foodhub.ui.theme.clickableOptionStyle
+import com.example.foodhub.ui.theme.inputAuthStyle
 import com.example.foodhub.ui.theme.passwordButton
-import com.example.foodhub.ui.theme.placeholderAuth
+import com.example.foodhub.ui.theme.placeholderAuthStyle
 import com.example.foodhub.ui.theme.unfocusedTextField
 
 @Composable
@@ -58,24 +54,11 @@ fun LogInScreen() {
         mutableStateOf(true)
     }
 
-    Box {
+    Box(modifier = Modifier.fillMaxSize()) {
         AuthBackground()
 
-        Box(
-            contentAlignment = Alignment.Center,
-            modifier = Modifier
-                .padding(30.dp)
-                .clip(RoundedCornerShape(12.dp))
-                .background(Color.White)
-                .size(38.dp)
-                .clickable {
-
-                }
-        ) {
-            Icon(
-                imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
-                contentDescription = "Back"
-            )
+        BackButton {
+            //TODO: back to Sign up
         }
 
         Column(
@@ -93,7 +76,7 @@ fun LogInScreen() {
             ) {
                 Text(
                     text = "Login",
-                    style = authTitle,
+                    style = authTitleStyle,
                     modifier = Modifier
                         .padding(bottom = 30.dp)
                         .fillMaxWidth()
@@ -102,7 +85,7 @@ fun LogInScreen() {
                 // Email field
                 Text(
                     text = "E-mail",
-                    style = authLabel,
+                    style = authTextFieldLabelStyle,
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(vertical = 10.dp)
@@ -115,11 +98,11 @@ fun LogInScreen() {
                         // Check if fields are empty
                         isEmptyFields = !(emailState.isNotBlank() && passwordState.isNotBlank())
                     },
-                    textStyle = inputAuth,
+                    textStyle = inputAuthStyle,
                     placeholder = {
                         Text(
                             text = "Your email or phone",
-                            style = placeholderAuth
+                            style = placeholderAuthStyle
                         )
                     },
                     singleLine = true,
@@ -136,7 +119,7 @@ fun LogInScreen() {
                 // Password field
                 Text(
                     text = "Password",
-                    style = authLabel,
+                    style = authTextFieldLabelStyle,
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(vertical = 10.dp)
@@ -150,11 +133,11 @@ fun LogInScreen() {
                         // Check if fields are empty
                         isEmptyFields = !(emailState.isNotBlank() && passwordState.isNotBlank())
                     },
-                    textStyle = inputAuth,
+                    textStyle = inputAuthStyle,
                     placeholder = {
                         Text(
                             text = "Password",
-                            style = placeholderAuth
+                            style = placeholderAuthStyle
                         )
                     },
                     singleLine = true,
@@ -197,11 +180,11 @@ fun LogInScreen() {
 
             Text(
                 text = "Forgot password?",
-                style = clickableOption,
+                style = clickableOptionStyle,
                 modifier = Modifier
                     .padding(bottom = 30.dp)
                     .clickable {
-
+                        //TODO: to reset password screen
                     }
             )
 
@@ -210,7 +193,13 @@ fun LogInScreen() {
                 sideText = "Don't have an account? ",
                 sideOption = "Sign Up",
                 otherOptionText = "Sign in with",
-                isEmptyFields = isEmptyFields
+                isEmptyFields = isEmptyFields,
+                authenticateOption = {
+                    //TODO: Login
+                },
+                sideOptionOnclick = {
+                    //TODO: to Sign Up screen
+                }
             )
         }
     }

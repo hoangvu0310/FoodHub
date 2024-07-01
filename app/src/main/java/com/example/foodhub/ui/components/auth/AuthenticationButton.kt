@@ -15,7 +15,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.example.foodhub.ui.theme.otherAuthOption
+import com.example.foodhub.ui.theme.otherAuthOptionStyle
 
 @Composable
 fun AuthenticationButton(
@@ -43,7 +43,7 @@ fun AuthenticationButton(
         )
         Text(
             text = text,
-            style = otherAuthOption,
+            style = otherAuthOptionStyle,
             textAlign = TextAlign.Center,
         )
     }

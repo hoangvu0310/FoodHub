@@ -1,10 +1,7 @@
 package com.example.foodhub.ui.view.auth
 
-import androidx.annotation.DrawableRes
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -13,11 +10,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
@@ -26,7 +20,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
@@ -46,7 +39,7 @@ import com.example.foodhub.ui.components.auth.OtherOptionTextWithLine
 import com.example.foodhub.ui.theme.appOrange
 import com.example.foodhub.ui.theme.sofiaPro
 import com.example.foodhub.ui.theme.startSignUpText
-import com.example.foodhub.ui.theme.welcomeDescription
+import com.example.foodhub.ui.theme.welcomeDescriptionStyle
 
 @Composable
 fun WelcomeScreen() {
@@ -70,7 +63,9 @@ fun WelcomeScreen() {
         ) {
 
             Button(
-                onClick = { /*TODO*/ },
+                onClick = {
+                    //TODO: to Sign up
+                },
                 colors = ButtonColors(
                     containerColor = Color.White,
                     contentColor = appOrange,
@@ -118,9 +113,11 @@ fun WelcomeScreen() {
                 modifier = Modifier.fillMaxWidth()
             )
             
+            Spacer(modifier = Modifier.size(20.dp))
+            
             Text(
                 text = "Your favorite food delivered\nfast at your door",
-                style = welcomeDescription,
+                style = welcomeDescriptionStyle,
                 textAlign = TextAlign.Start,
                 modifier = Modifier.fillMaxWidth()
             )
@@ -148,19 +145,21 @@ fun WelcomeScreen() {
                     text = "FACEBOOK",
                     elevation = 0.dp
                 ) {
-
+                    //TODO: authenticate with FB
                 }
                 AuthenticationButton(
                     iconId = R.drawable.gg_icon,
                     text = "GOOGLE",
                     elevation = 0.dp
                 ) {
-
+                    //TODO: authenticate with GG
                 }
             }
 
             OutlinedButton(
-                onClick = { /*TODO*/ },
+                onClick = {
+                    //TODO: to Sign up
+                },
                 colors = ButtonDefaults.elevatedButtonColors(Color.Transparent),
                 border = BorderStroke(2.dp, Color.White),
                 modifier = Modifier
@@ -211,7 +210,7 @@ fun WelcomeScreen() {
                             )
                         }
                         .clickable {
-
+                            //TODO: to Login
                         }
                 )
             }

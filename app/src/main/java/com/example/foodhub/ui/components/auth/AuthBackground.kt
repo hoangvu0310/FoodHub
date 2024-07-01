@@ -24,8 +24,9 @@ import com.example.foodhub.ui.theme.circleBeige
 
 @Composable
 fun AuthBackground() {
+    // Top circle back ground decoration
     Box(modifier = Modifier.fillMaxSize()) {
-        Canvas(modifier = Modifier.fillMaxWidth()) { // Top circle decoration
+        Canvas(modifier = Modifier.fillMaxWidth()) {
             val canvasWidth = size.width
 
             drawCircle(
@@ -49,23 +50,6 @@ fun AuthBackground() {
                 center = Offset(x = canvasWidth + 100f, y = -30f)
             )
 
-        }
-
-        Box(
-            contentAlignment = Alignment.Center,
-            modifier = Modifier
-                .padding(30.dp)
-                .clip(RoundedCornerShape(12.dp))
-                .background(Color.White)
-                .size(38.dp)
-                .clickable {
-
-                }
-        ) {
-            Icon(
-                imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
-                contentDescription = "Back"
-            )
         }
     }
 }

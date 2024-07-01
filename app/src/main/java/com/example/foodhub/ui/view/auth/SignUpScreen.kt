@@ -29,11 +29,11 @@ import com.example.foodhub.R
 import com.example.foodhub.ui.components.auth.AuthBackground
 import com.example.foodhub.ui.components.auth.AuthenticationOptionGroup
 import com.example.foodhub.ui.theme.appOrange
-import com.example.foodhub.ui.theme.authLabel
-import com.example.foodhub.ui.theme.authTitle
-import com.example.foodhub.ui.theme.inputAuth
+import com.example.foodhub.ui.theme.authTextFieldLabelStyle
+import com.example.foodhub.ui.theme.authTitleStyle
+import com.example.foodhub.ui.theme.inputAuthStyle
 import com.example.foodhub.ui.theme.passwordButton
-import com.example.foodhub.ui.theme.placeholderAuth
+import com.example.foodhub.ui.theme.placeholderAuthStyle
 import com.example.foodhub.ui.theme.unfocusedTextField
 
 
@@ -55,7 +55,7 @@ fun SignUpScreen() {
         mutableStateOf(true)
     }
 
-    Box {
+    Box(modifier = Modifier.fillMaxSize()) {
         AuthBackground()
 
         Column ( // Input text fields
@@ -74,7 +74,7 @@ fun SignUpScreen() {
             ) {
                 Text(
                     text = "Sign up",
-                    style = authTitle,
+                    style = authTitleStyle,
                     modifier = Modifier
                         .padding(bottom = 30.dp)
                         .fillMaxWidth()
@@ -83,7 +83,7 @@ fun SignUpScreen() {
                 // Full name field
                 Text(
                     text = "Full name",
-                    style = authLabel,
+                    style = authTextFieldLabelStyle,
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(vertical = 10.dp)
@@ -99,11 +99,11 @@ fun SignUpScreen() {
                                 )
                     },
 
-                    textStyle = inputAuth,
+                    textStyle = inputAuthStyle,
                     placeholder = {
                         Text(
                             text = "Your full name",
-                            style = placeholderAuth
+                            style = placeholderAuthStyle
                         )
                     },
                     singleLine = true,
@@ -120,7 +120,7 @@ fun SignUpScreen() {
                 // Email field
                 Text(
                     text = "E-mail",
-                    style = authLabel,
+                    style = authTextFieldLabelStyle,
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(vertical = 10.dp)
@@ -135,11 +135,11 @@ fun SignUpScreen() {
                                 && passwordFieldState.isNotBlank()
                                 )
                     },
-                    textStyle = inputAuth,
+                    textStyle = inputAuthStyle,
                     placeholder = {
                         Text(
                             text = "Your email or phone",
-                            style = placeholderAuth
+                            style = placeholderAuthStyle
                         )
                     },
                     singleLine = true,
@@ -156,7 +156,7 @@ fun SignUpScreen() {
                 // Password field
                 Text(
                     text = "Password",
-                    style = authLabel,
+                    style = authTextFieldLabelStyle,
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(vertical = 10.dp)
@@ -171,11 +171,11 @@ fun SignUpScreen() {
                                 && passwordFieldState.isNotBlank()
                                 )
                     },
-                    textStyle = inputAuth,
+                    textStyle = inputAuthStyle,
                     placeholder = {
                         Text(
                             text = "Password",
-                            style = placeholderAuth
+                            style = placeholderAuthStyle
                         )
                     },
                     singleLine = true,
@@ -221,7 +221,13 @@ fun SignUpScreen() {
                 sideText = "Already have an account? ",
                 sideOption = "Login",
                 otherOptionText = "Sign up with",
-                isEmptyFields = isEmptyFields
+                isEmptyFields = isEmptyFields,
+                authenticateOption = {
+                    //TODO: Sign up
+                },
+                sideOptionOnclick = {
+                    //TODO: to login screen
+                }
             )
         }
     }
