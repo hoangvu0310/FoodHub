@@ -1,6 +1,5 @@
 package com.example.foodhub.ui.view.auth
 
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -27,18 +26,17 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import com.example.foodhub.R
+import com.example.foodhub.ui.components.auth.AuthBackground
 import com.example.foodhub.ui.components.auth.AuthenticationOptionGroup
 import com.example.foodhub.ui.theme.appOrange
 import com.example.foodhub.ui.theme.authLabel
 import com.example.foodhub.ui.theme.authTitle
-import com.example.foodhub.ui.theme.circleBeige
 import com.example.foodhub.ui.theme.clickableOption
 import com.example.foodhub.ui.theme.inputAuth
 import com.example.foodhub.ui.theme.passwordButton
@@ -60,32 +58,8 @@ fun LogInScreen() {
         mutableStateOf(true)
     }
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        Canvas(modifier = Modifier.fillMaxWidth()) { // Top circle decoration
-            val canvasWidth = size.width
-
-            drawCircle(
-                color = appOrange,
-                radius = 96f * 2,
-                center = Offset(x = 5f, y = 75f)
-            )
-            drawCircle(
-                color = Color.White,
-                radius = 25f * 2,
-                center = Offset(x = 5f, y = 75f)
-            )
-            drawCircle(
-                color = circleBeige,
-                radius = 165f * 2,
-                center = Offset(x = 320f, y = -90f)
-            )
-            drawCircle(
-                color = appOrange,
-                radius = 181f * 2,
-                center = Offset(x = canvasWidth + 100f, y = -30f)
-            )
-
-        }
+    Box {
+        AuthBackground()
 
         Box(
             contentAlignment = Alignment.Center,
@@ -230,7 +204,7 @@ fun LogInScreen() {
 
                     }
             )
-            
+
             AuthenticationOptionGroup(
                 mainOption = "LOGIN",
                 sideText = "Don't have an account? ",

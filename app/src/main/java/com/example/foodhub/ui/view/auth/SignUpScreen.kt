@@ -1,6 +1,5 @@
 package com.example.foodhub.ui.view.auth
 
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -22,18 +21,16 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import com.example.foodhub.R
+import com.example.foodhub.ui.components.auth.AuthBackground
 import com.example.foodhub.ui.components.auth.AuthenticationOptionGroup
 import com.example.foodhub.ui.theme.appOrange
 import com.example.foodhub.ui.theme.authLabel
 import com.example.foodhub.ui.theme.authTitle
-import com.example.foodhub.ui.theme.circleBeige
 import com.example.foodhub.ui.theme.inputAuth
 import com.example.foodhub.ui.theme.passwordButton
 import com.example.foodhub.ui.theme.placeholderAuth
@@ -58,33 +55,9 @@ fun SignUpScreen() {
         mutableStateOf(true)
     }
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        Canvas(modifier = Modifier.fillMaxWidth()) { // Top circle decoration
-            val canvasWidth = size.width
+    Box {
+        AuthBackground()
 
-            drawCircle(
-                color = appOrange,
-                radius = 96f * 2,
-                center = Offset(x = 5f, y = 75f)
-            )
-            drawCircle(
-                color = Color.White,
-                radius = 25f * 2,
-                center = Offset(x = 5f, y = 75f)
-            )
-            drawCircle(
-                color = circleBeige,
-                radius = 165f * 2,
-                center = Offset(x = 320f, y = -90f)
-            )
-            drawCircle(
-                color = appOrange,
-                radius = 181f * 2,
-                center = Offset(x = canvasWidth + 100f, y = -30f)
-            )
-
-        }
-        
         Column ( // Input text fields
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -182,11 +155,11 @@ fun SignUpScreen() {
 
                 // Password field
                 Text(
-                text = "Password",
-                style = authLabel,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 10.dp)
+                    text = "Password",
+                    style = authLabel,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 10.dp)
                 )
 
                 OutlinedTextField(
@@ -231,12 +204,12 @@ fun SignUpScreen() {
                         }
                     },
                     visualTransformation = (
-                        if(showPassword) {
-                            VisualTransformation.None
-                        } else {
-                            PasswordVisualTransformation()
-                        }
-                    ),
+                            if(showPassword) {
+                                VisualTransformation.None
+                            } else {
+                                PasswordVisualTransformation()
+                            }
+                            ),
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(bottom = 40.dp)
